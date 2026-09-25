@@ -35,7 +35,17 @@ INSERT INTO FirstEverTable VALUES ('Fernando','Alonso',2025, 'ALpine','A110', 1.
 ('Nico','Hulkenberg',2007, 'Skoda','Octavia', 1.9, 'Diesel', 104),
 ('Bukayo','Saka',2026, 'Audi','Q8 50 TDI', 3.0, 'Diesel', 280); */
 
+UPDATE FirstEverTable
+SET Brand = 'Alpine' 
+WHERE CarModel = 'A110'
+
+UPDATE FirstEverTable
+SET CarModel = 'A3 Sportback 35 TDI'
+WHERE LastName = 'Messi'
+
+INSERT INTO FirstEverTable (FirstName,LastName,CarYear,Brand,CarModel,FuelType,HorsePower )
+VALUES ('Lewis','Hamilton',2025, 'Tesla','Cybertruck', 'Electric', 845)
+
 SELECT *
 FROM FirstEverTable
-WHERE FuelType = 'Diesel'
-ORDER BY HorsePower
+
