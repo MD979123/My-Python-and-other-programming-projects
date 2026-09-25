@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Quiz {
+
+    static String[][] questions = {
+        {"What is the capital of France?", "A) Berlin", "B) Madrid", "C) Paris", "D) Rome", "C"},
+        {"Which planet is closest to the Sun?", "A) Venus", "B) Mercury", "C) Mars", "D) Earth", "B"},
+        {"What is 12 x 12?", "A) 132", "B) 140", "C) 144", "D) 148", "C"},
+        {"Who wrote 'Romeo and Juliet'?", "A) Charles Dickens", "B) Homer", "C) Jane Austen", "D) William Shakespeare", "D"},
+        {"What is the chemical symbol for Gold?", "A) Go", "B) Gd", "C) Au", "D) Ag", "C"},
+        {"How many continents are there on Earth?", "A) 5", "B) 6", "C) 7", "D) 8", "C"},
+        {"What is the largest ocean on Earth?", "A) Atlantic", "B) Indian", "C) Arctic", "D) Pacific", "D"},
+        {"Which language runs in a web browser?", "A) Java", "B) C++", "C) JavaScript", "D) Python", "C"},
+    };
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;
+        int total = questions.length;
+
+        System.out.println("╔══════════════════════════════╗");
+        System.out.println("║        JAVA QUIZ GAME        ║");
+        System.out.println("╚══════════════════════════════╝");
+        System.out.println("Answer each question by typing A, B, C, or D.\n");
+
+        for (int i = 0; i < total; i++) {
+            String[] q = questions[i];
+            System.out.println("Question " + (i + 1) + " of " + total);
+            System.out.println("─────────────────────────────");
+            System.out.println(q[0]);
+            System.out.println("  " + q[1]);
+            System.out.println("  " + q[2]);
+            System.out.println("  " + q[3]);
+            System.out.println("  " + q[4]);
+            System.out.print("\nYour answer: ");
+
+            String answer = scanner.nextLine().trim().toUpperCase();
+
+            // Validate input
+            while (!answer.equals("A") && !answer.equals("B") && !answer.equals("C") && !answer.equals("D")) {
+                System.out.print("Invalid input. Please enter A, B, C, or D: ");
+                answer = scanner.nextLine().trim().toUpperCase();
+            }
+
+            String correct = q[5];
+            if (answer.equals(correct)) {
+                System.out.println("✔ Correct!\n");
+                score++;
+            } else {
+                System.out.println("✘ Wrong! The correct answer was: " + correct + "\n");
+            }
+        }
+
+        // Results
+        System.out.println("══════════════════════════════");
+        System.out.println("          QUIZ OVER!          ");
+        System.out.println("══════════════════════════════");
+        System.out.printf("Your score: %d / %d (%.0f%%)%n", score, total, (score * 100.0 / total));
+        System.out.println();
+
+        // Grade feedback
+        double percent = score * 100.0 / total;
+        if (percent == 100) {
+            System.out.println("🏆 Perfect score! Excellent work!");
+        } else if (percent >= 75) {
+            System.out.println("🎉 Great job! Well done!");
+        } else if (percent >= 50) {
+            System.out.println("👍 Not bad! Keep practising.");
+        } else {
+            System.out.println("📚 Better luck next time! Keep studying.");
+        }
+
+        scanner.close();
+    }
+}
