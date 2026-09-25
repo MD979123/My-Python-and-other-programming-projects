@@ -1,17 +1,1 @@
 
-/* CREATE TABLE FirstEverTable (
-  FirstName varchar(300),
-  LastName varchar(300),
-  CarYear INT,
-  Brand varchar(300),
-  CarModel varchar(300),
-  EngineSize DECIMAL (3,1),
-  FuelType varchar(300),
-  HorsePower INT
-) 
-
---INSERT INTO FirstEverTable VALUES ('Cristiano','Ronaldo',2010, 'Volkswagen','Golf', 1.6, 'Diesel', 105); */
-
-SELECT *
-FROM FirstEverTable;
-
