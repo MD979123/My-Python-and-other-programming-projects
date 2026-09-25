@@ -56,11 +56,23 @@ VALUES ('Lewis','Hamilton',2025, 'Tesla','Cybertruck', 'Electric', 845) */
 INSERT INTO FirstEverTable VALUES ('Steve','Johnson',2000, 'Ford','Focus', 1.8, 'Diesel', 99),
 ('John','Smith',2018, 'Dacia','Sandero', 1.5, 'Diesel', 90),
 ('Joe','Burton',2009, 'Citroen','C4', 2.0, 'Diesel', 138),
-('Fred','Norton',2004, 'Vauxhall','Corsa', 1.4, 'Petrol', 89); */
+('Fred','Norton',2004, 'Vauxhall','Corsa', 1.4, 'Petrol', 89); 
 
 
-SELECT *
-FROM FirstEverTable
+UPDATE FirstEverTable
+SET FuelType = 'Petrol Hybrid'
+WHERE CarModel = '296 GTB' */
+
+SELECT TOP 1 CarModel, MIN(LEN(CarModel)) AS [CharNum] FROM FirstEverTable
+GROUP BY CarModel
+ORDER BY [CharNum]
+
+SELECT TOP 1 CarModel, MAX(LEN(CarModel)) AS [CharNum] FROM FirstEverTable
+GROUP BY CarModel
+ORDER BY [CharNum] DESC;
+
+SELECT CarModel FROM FirstEverTable WHERE CarModel NOT LIKE 'a%' OR CarModel NOT LIKE 'e%' OR CarModel NOT LIKE 'i%' OR CarModel NOT LIKE 'o%' OR CarModel NOT LIKE 'u%'
+ORDER BY CarModel
 
 
 
