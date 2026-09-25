@@ -28,8 +28,14 @@ INSERT INTO FirstEverTable VALUES ('Sergio','Ramos',2024, 'Ferrari','296 GTB', 3
 
 UPDATE FirstEverTable
 SET CarModel = 'F40'
-WHERE LastName = 'Leclerc' */
+WHERE LastName = 'Leclerc' 
+
+INSERT INTO FirstEverTable VALUES ('Fernando','Alonso',2025, 'ALpine','A110', 1.8, 'Petrol', 249),
+('Radu','Dragusin',2026, 'Lamborghini','Urus Performante', 4.0, 'Petrol', 657),
+('Nico','Hulkenberg',2007, 'Skoda','Octavia', 1.9, 'Diesel', 104),
+('Bukayo','Saka',2026, 'Audi','Q8 50 TDI', 3.0, 'Diesel', 280); */
 
 SELECT *
 FROM FirstEverTable
-ORDER BY CarYear
+WHERE FuelType = 'Diesel'
+ORDER BY HorsePower
