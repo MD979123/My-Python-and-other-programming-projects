@@ -61,18 +61,19 @@ INSERT INTO FirstEverTable VALUES ('Steve','Johnson',2000, 'Ford','Focus', 1.8, 
 
 UPDATE FirstEverTable
 SET FuelType = 'Petrol Hybrid'
-WHERE CarModel = '296 GTB' */
+WHERE CarModel = '296 GTB' 
 
-SELECT TOP 1 CarModel, MIN(LEN(CarModel)) AS [CharNum] FROM FirstEverTable
-GROUP BY CarModel
-ORDER BY [CharNum]
+INSERT INTO FirstEverTable 
+VALUES ('Brad','Johanson',2003, 'VW','Golf', 1.9, 'Diesel', 101),
+('Kyle','Branson',2011, 'Renault','Clio', 1.6, 'Petrol', 110),
+('Michael','Albert',2018, 'Nissan','Note', 1.2, 'Petrol', 78),
+('Craig','William',1999, 'BMW','3 Series', 2.0, 'Diesel', 134) */
 
-SELECT TOP 1 CarModel, MAX(LEN(CarModel)) AS [CharNum] FROM FirstEverTable
-GROUP BY CarModel
-ORDER BY [CharNum] DESC;
+SELECT Brand, COUNT(Brand) AS 'num'
+FROM FirstEverTable
+GROUP BY Brand
+ORDER BY num DESC;
 
-SELECT CarModel FROM FirstEverTable WHERE CarModel NOT LIKE 'a%' OR CarModel NOT LIKE 'e%' OR CarModel NOT LIKE 'i%' OR CarModel NOT LIKE 'o%' OR CarModel NOT LIKE 'u%'
-ORDER BY CarModel
 
 
 
