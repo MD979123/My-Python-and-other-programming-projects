@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import tkinter.messagebox as tkmb
 
 window = ctk.CTk()
 ctk.set_appearance_mode("light")
@@ -22,6 +23,10 @@ results_text.pack(pady=10)
 def calculate_smp_std_dev():
     box_input = entry.get()
     numbers_list = box_input.split()
+
+    if ',' in box_input:
+        tkmb.showerror("Error", "Inputted numbers must not have any other characters")
+        return
 
     for i in range(len(numbers_list)):
         numbers_list[i] = float(numbers_list[i])
@@ -53,6 +58,10 @@ def calculate_smp_std_dev():
 def calculate_pop_std_dev():
     box_input = entry.get()
     numbers_list = box_input.split()
+
+    if ',' in box_input:
+        tkmb.showerror("Error", "Inputted numbers must not have any other characters")
+        return
 
     for i in range(len(numbers_list)):
         numbers_list[i] = float(numbers_list[i])
