@@ -1,46 +1,59 @@
+import customtkinter as ctk
 
-numbers = input('Enter all the numbers, each number separated by space: ')
-numbers_list = numbers.split()
+window = ctk.CTk()
+ctk.set_appearance_mode("light")
+ctk.set_default_color_theme("blue")
+window.geometry('1200x800')
+window.title('Sample Standard Deviation Calculator')
 
-for i in range(len(numbers_list)):
-    numbers_list[i] = int(numbers_list[i])
+title = ctk.CTkLabel(window, text="Sample Standard Deviation Calculator", fg_color="transparent",
+                     font=("Calibri", 24, "bold", "underline")).pack(pady=20)
+command = ctk.CTkLabel(window, text='Enter all the numbers (MINIMUM 2), each number separated by space: ',
+                     font=("Arial", 20)).pack(pady=10)
 
-print(numbers_list)
-squared = 0
-sum = 0
-amount = len(numbers_list)
-std_dev = 0
+entry = ctk.CTkEntry(window, width=1000)
+entry.pack(pady=20)
 
 
-def square(numbers_list, squared):
+results_text = (ctk.CTkLabel(window, text='Results', font=("Arial", 20), justify='center'))
+results_text.pack(pady=10)
+
+
+def calculate_smp_std_dev():
+    box_input = entry.get()
+    numbers_list = box_input.split()
+
     for i in range(len(numbers_list)):
-        squared += (numbers_list[i]) ** 2
-    return squared
+        numbers_list[i] = float(numbers_list[i])
 
+    def square(numbers_list, squared):
+        for i in range(len(numbers_list)):
+            squared += (numbers_list[i]) ** 2
+        return squared
 
-def total(numbers_list, sum):
-    for i in range(len(numbers_list)):
-        sum += numbers_list[i]
-    return sum
-
-
-avg = (total(numbers_list, sum) / len(numbers_list))
-total = total(numbers_list, sum)
-totalSquared = square(numbers_list, squared)
-
-
-def smp_std_dev(totalSquared, total, avg):
+    amount = len(numbers_list)
+    # calculations
+    squared = 0
+    avg = (sum(numbers_list) / amount)
+    total = sum(numbers_list)
+    totalSquared = square(numbers_list, squared)
     std_dev = ((totalSquared / (amount - 1)) - ((20 * (avg ** 2)) / (amount - 1))) ** 0.5
-    return std_dev
 
 
-std_dev = smp_std_dev(totalSquared, total, avg)
+    output_text = (
+            f"Count (n): {amount}\n"
+            f"Sum of values: {total}\n"
+            f"Sum of squared values: {totalSquared}\n"
+            f"Mean: {avg}\n"
+            f"Sample Std Dev: {std_dev}"
+    )
+    results_text.configure(text=output_text)
 
-print('The sum of all the squared values is', totalSquared)
-print('The sum of all values is', total)
-print('The mean is', avg)
-print('There are', amount, 'numbers.')
-print('The sample standard deviation is', std_dev)
+calc_button = (ctk.CTkButton(window, text='Calculate', command=calculate_smp_std_dev))
+calc_button.pack(pady=10)
+
+window.mainloop()
+
 
 
 
