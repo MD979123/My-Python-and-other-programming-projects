@@ -37,7 +37,8 @@ def calculate_smp_std_dev():
     avg = (sum(numbers_list) / amount)
     total = sum(numbers_list)
     totalSquared = square(numbers_list, squared)
-    std_dev = ((totalSquared / (amount - 1)) - ((20 * (avg ** 2)) / (amount - 1))) ** 0.5
+    n = amount - 1
+    std_dev = ( (totalSquared / n) - ( ( amount * (avg ** 2) ) / n) ) ** 0.5
 
 
     output_text = (
